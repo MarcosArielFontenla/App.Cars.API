@@ -9,23 +9,32 @@ namespace Cars.API.Services
             new Car
             {
                 Id = 1,
-                Age = "2019",
-                ModelName = "Toyota",
-                Color = "Red"
+                Make = "Toyota",
+                ModelName = "Corolla",
+                Description = "Car Toyota description",
+                Color = "Red",
+                Year = 2019,
+                Price = 8000
             },
             new Car
             {
                 Id = 2,
-                Age = "2020",
-                ModelName = "Honda",
-                Color = "Blue"
+                Make = "Honda",
+                ModelName = "Civic",
+                Description = "Car Honda description",
+                Color = "Blue",
+                Year = 2020,
+                Price = 9000
             },
             new Car
             {
                 Id = 3,
-                Age = "2021",
-                ModelName = "Ford",
-                Color = "Green"
+                Make = "Ford",
+                ModelName = "Focus",
+                Description = "Car Ford description",
+                Color = "Orange",
+                Year = 2023,
+                Price = 7000
             }
         };
 
@@ -45,15 +54,18 @@ namespace Cars.API.Services
             cars.Add(car);
         }
 
-        public void UpdateCard(int id, Car updateCar)
+        public void UpdateCar(int id, Car updateCar)
         {
             var existingCar = cars.FirstOrDefault(c => c.Id == id);
 
             if (existingCar is not null)
             {
-                existingCar.Age = updateCar.Age;
+                existingCar.Make = updateCar.Make;
                 existingCar.ModelName = updateCar.ModelName;
+                existingCar.Description = updateCar.Description;
                 existingCar.Color = updateCar.Color;
+                existingCar.Year = updateCar.Year;
+                existingCar.Price = updateCar.Price;
             }
         }
 

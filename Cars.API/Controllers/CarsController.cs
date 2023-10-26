@@ -1,11 +1,13 @@
 ﻿using Cars.API.Models;
 using Cars.API.Services;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Cars.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("AllowCarsApp")]
     public class CarsController : ControllerBase
     {
         private readonly CarService _carService;
@@ -27,9 +29,8 @@ namespace Cars.API.Controllers
             var car = _carService.GetCarById(id);
 
             if (car is null)
-            {
                 return NotFound();
-            }
+
             return Ok(car);
         }
 
@@ -43,7 +44,7 @@ namespace Cars.API.Controllers
         [HttpPut("{id}")]
         public IActionResult UpdateCar(int id, [FromBody] Car car)
         {
-            _carService.UpdateCard(id, car);
+            _carService.UpdateCar(id, car);
             return NoContent();
         }
 
